@@ -1,8 +1,24 @@
 /* Generel settings */
+.dashboard-sidebar {
+  background-color: #eff1f5;
+  border-radius: 10px;
+}
+
+.dashboard-container {
+  height: 100vh;
+}
+
 h1 {
   font-family: "Roboto"; 
   color: black; 
   font-size: 35px;
+  margin: 15px;
+}
+
+h2 {
+  font-family: "Roboto"; 
+  color: black; 
+  font-size: 25px;
   margin: 15px;
 }
 
@@ -29,6 +45,8 @@ p {
   padding: 6px;
   font-family: "Roboto";
   border-radius: 3px;
+  color: black;
+  background-color: #ccd0da;
 }
 
 .btn.btn-outline-light {
@@ -39,3 +57,6 @@ p {
   color: #010103;
   background-color: color-mix(in srgb, var(--bs-light), #010103 7%);
 }
+
+/* Graph element */
+.graph-element {}

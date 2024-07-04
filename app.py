@@ -48,7 +48,12 @@ fig = go.Figure(
     ),
 )
 
-fig.update_layout(barmode="group")
+fig.update_layout(
+    barmode="group",
+    width=990,
+    height=600,
+    legend={"orientation": "h", "y": -0.2, "x": 0.2},
+)
 
 # Initialize the app
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
@@ -62,7 +67,14 @@ app.layout = dbc.Container(
                     [
                         html.H1(children="Personal Finances Dashboard"),
                         html.P(
-                            children="This dashboards provides an overview of my personal finances to quickly navigate expenses, income and shares."
+                            children="This dashboards provides an overview of my personal finances to quickly navigate expenses, income and stocks."
+                        ),
+                    ]
+                ),
+                html.Div(
+                    [
+                        html.H2(
+                            children="Expenditures and Income", style={"margin-top": 50}
                         ),
                     ]
                 ),
@@ -79,15 +91,38 @@ app.layout = dbc.Container(
                                     {"label": "Table", "value": 2},
                                 ],
                                 value=1,
+                                style={"width": "100%"},
                             ),
-                            style={"width": 206},
+                            style={"width": 340},
                         ),
-                        html.Div(style={"width": 104}),
                     ],
                     style={"margin-left": 15, "margin-right": 15, "display": "flex"},
                 ),
-                html.Div(),
-                html.Div(),
+                html.Div(
+                    [
+                        html.H2(children="Shares", style={"margin-top": 50}),
+                    ]
+                ),
+                html.Div(
+                    [
+                        html.Div(
+                            dbc.RadioItems(
+                                className="btn-group",
+                                inputClassName="btn-check",
+                                labelClassName="btn btn-outline-light",
+                                labelCheckedClassName="btn btn-light",
+                                options=[
+                                    {"label": "Graph", "value": 1},
+                                    {"label": "Table", "value": 2},
+                                ],
+                                value=1,
+                                style={"width": "100%"},
+                            ),
+                            style={"width": 340},
+                        ),
+                    ],
+                    style={"margin-left": 15, "margin-right": 15, "display": "flex"},
+                ),
             ],
             style={
                 "width": 340,
@@ -95,6 +130,7 @@ app.layout = dbc.Container(
                 "margin-top": 35,
                 "margin-bottom": 35,
             },
+            className="dashboard-sidebar",
         ),
         html.Div(
             [
@@ -102,9 +138,9 @@ app.layout = dbc.Container(
             ],
             style={
                 "width": 990,
-                "margin-top": 35,
+                "margin-top": "auto",
                 "margin-right": 35,
-                "margin-bottom": 35,
+                "margin-bottom": "auto",
             },
         ),
     ],
